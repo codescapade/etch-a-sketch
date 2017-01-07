@@ -10,7 +10,22 @@ $(document).ready(function ()
 function resetGrid ()
 {
 	// show the prompt to enter the number of tiles per side
-	var size = prompt("Number of squares per side?");
+	var size = parseInt(prompt("Number of squares per side? (4 - 100)", "16"));
+
+	// make sure size entered is a number and within limits
+	if (isNaN(size))
+	{
+		size = 16;
+	}
+	else if (size < 4)
+	{
+		size = 4;
+	}
+	else if (size > 100)
+	{
+		size = 100;
+	}
+
 	createGrid(size);
 }
 
